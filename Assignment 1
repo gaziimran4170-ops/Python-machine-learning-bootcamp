@@ -1,0 +1,163 @@
+QUESTION 1: VARIABLES AND DATA TYPES
+(a)
+name = "John"
+age = 20
+gpa = 3.5
+is_student = True
+
+print(type(name))
+print(type(age))
+print(type(gpa))
+print(type(is_student))
+
+(b)
+print(int("123"))
+print(str(456))
+print(int(3.99))  # Decimal part is removed
+print(bool(1), bool(0))
+
+
+QUESTION 2: OPERATORS
+
+a = 17
+b = 5
+print(a + b, a - b, a * b, a / b)
+print(a // b, a % b)
+print(a ** b)
+print(a > b, a == b, a != b)
+
+
+QUESTION 3: STRING MANIPULATION
+
+name = "python programming"
+print(name.upper())
+print(name.title())
+print(name.replace("programming", "language"))
+print(len(name))
+
+# f-string
+my_name = "John"
+my_age = 20
+my_gpa = 3.5
+print(f"My name is {my_name}, I am {my_age} years old, and my GPA is {my_gpa}")
+
+
+QUESTION 4: CONDITIONAL STATEMENTS
+
+age = int(input("Enter age: "))
+if age < 0:
+    print("Invalid age")
+elif age < 13:
+    print("You are a child")
+elif age <= 17:
+    print("You are a teenager")
+else:
+    print("You are an adult")
+
+# Even / Odd
+num = int(input("Enter number: "))
+print("Even" if num % 2 == 0 else "Odd")
+
+# Grade Calculator
+mark = int(input("Enter mark: "))
+if mark < 0 or mark > 100:
+    print("Invalid mark")
+elif mark >= 90:
+    print("A+")
+elif mark >= 80:
+    print("A")
+elif mark >= 70:
+    print("B")
+elif mark >= 60:
+    print("C")
+elif mark >= 50:
+    print("D")
+else:
+    print("F - Failed")
+
+# Login System
+username = "admin"
+password = "1234"
+attempts = 3
+
+while attempts > 0:
+    u = input("Username: ")
+    p = input("Password: ")
+    if u == username and p == password:
+        print("Login successful!")
+        break
+    elif u == username:
+        print("Incorrect password")
+    else:
+        print("User not found")
+    attempts -= 1
+if attempts == 0:
+    print("Account locked")
+
+
+QUESTION 5: ATM SIMULATION
+
+correct_pin = 1234
+balance = 5000
+attempts = 3
+
+while attempts > 0:
+    pin = int(input("Enter PIN: "))
+    if pin == correct_pin:
+        amount = int(input("Enter withdrawal amount: "))
+        if amount > 500 and amount <= balance:
+            balance -= amount
+            print("Withdrawal successful")
+        else:
+            print("Insufficient balance or invalid amount")
+        break
+    else:
+        attempts -= 1
+        print(f"Wrong pin. Attempts remaining: {attempts}")
+if attempts == 0:
+    print("Card blocked!")
+
+
+QUESTION 6: BASIC LOOPS
+
+# For loop
+for i in range(1, 21):
+    print(i)
+
+for i in range(1, 11):
+    print(f"7 x {i} = {7*i}")
+
+print(sum(range(1, 101)))
+
+for i in range(2, 51, 2):
+    print(i)
+
+fruits = ['apple', 'banana', 'cherry', 'mango', 'grape']
+for i, fruit in enumerate(fruits, 1):
+    print(i, fruit)
+
+# While loop
+i = 10
+while i > 0:
+    print(i)
+    i -= 1
+
+total = 0
+while True:
+    n = int(input("Enter positive number: "))
+    if n <= 0:
+        break
+    total += n
+print("Total:", total)
+
+i = 10
+while i >= 0:
+    print(i)
+    i -= 1
+print("Blast off!")
+
+count = 1
+while count <= 10:
+    print(6 * count)
+    count += 1
+
