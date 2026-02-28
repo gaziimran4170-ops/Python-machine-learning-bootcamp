@@ -1,0 +1,204 @@
+Car Class
+Python
+Copy code
+class Car:
+    def _init_(self, brand, model, year, speed=0):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.speed = speed
+
+    def accelerate(self, amount):
+        self.speed += amount
+
+    def brake(self, amount):
+        self.speed = max(0, self.speed - amount)
+
+    def display_info(self):
+        print(f"Brand: {self.brand}, Model: {self.model}, Year: {self.year}, Speed: {self.speed}")
+
+
+# Creating objects
+car1 = Car("Toyota", "Corolla", 2020)
+car2 = Car("Honda", "Civic", 2022)
+
+car1.accelerate(30)
+car1.brake(10)
+car1.display_info()
+
+car2.accelerate(50)
+car2.display_info()
+2. BankAccount Class
+Python
+Copy code
+class BankAccount:
+    def _init_(self, account_holder, account_number, balance=0):
+        self.account_holder = account_holder
+        self.account_number = account_number
+        self.balance = balance
+        self.history = []
+
+    def deposit(self, amount):
+        self.balance += amount
+        self.history.append(f"Deposited {amount}")
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Error: Insufficient balance")
+        else:
+            self.balance -= amount
+            self.history.append(f"Withdrew {amount}")
+
+    def get_balance(self):
+        print("Current balance:", self.balance)
+
+    def transaction_history(self):
+        print("Transaction History:")
+        for h in self.history:
+            print(h)
+
+
+# Creating accounts
+acc1 = BankAccount("Alice", "A101")
+acc2 = BankAccount("Bob", "B202")
+
+acc1.deposit(1000)
+acc1.withdraw(300)
+acc1.deposit(200)
+
+acc2.deposit(2000)
+acc2.withdraw(500)
+acc2.withdraw(1000)
+
+acc1.transaction_history()
+acc2.transaction_history()
+3. Library and Book Classes
+Python
+Copy code
+class Book:
+    def _init_(self, title, author, isbn, is_available=True):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+        self.is_available = is_available
+
+
+class Library:
+    def _init_(self, name):
+        self.name = name
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def borrow_book(self, isbn):
+        for book in self.books:
+            if book.isbn == isbn and book.is_available:
+                book.is_available = False
+                print(f"Borrowed: {book.title}")
+                return
+        print("Book not available")
+
+    def return_book(self, isbn):
+        for book in self.books:
+            if book.isbn == isbn:
+                book.is_available = True
+                print(f"Returned: {book.title}")
+                return
+
+    def show_available_books(self):
+        print("Available Books:")
+        for book in self.books:
+            if book.is_available:
+                print(book.title)
+
+
+# Library usage
+library = Library("City Library")
+
+b1 = Book("Python Basics", "John", "111")
+b2 = Book("OOP Python", "Alice", "222")
+b3 = Book("Data Science", "Bob", "333")
+b4 = Book("AI Intro", "Eve", "444")
+
+library.add_book(b1)
+library.add_book(b2)
+library.add_book(b3)
+library.add_book(b4)
+
+library.borrow_book("111")
+library.borrow_book("222")
+library.return_book("111")
+library.show_available_books()
+4. Employee Class
+Python
+Copy code
+class Employee:
+    total_employees = 0
+
+    def _init_(self, name, employee_id, department, salary):
+        self.name = name
+        self.employee_id = employee_id
+        self.department = department
+        self.salary = salary
+        Employee.total_employees += 1
+
+    def give_raise(self, percent):
+        self.salary += self.salary * percent / 100
+
+    def details(self):
+        print(self.name, self.employee_id, self.department, self.salary)
+
+
+# Creating employees
+e1 = Employee("Alice", 101, "HR", 50000)
+e2 = Employee("Bob", 102, "IT", 60000)
+e3 = Employee("Charlie", 103, "Sales", 45000)
+
+e1.give_raise(10)
+e2.give_raise(15)
+
+e1.details()
+e2.details()
+e3.details()
+
+print("Total employees:", Employee.total_employees)
+5. ShoppingCart Class
+Python
+Copy code
+class ShoppingCart:
+    def _init_(self, customer_name):
+        self.customer_name = customer_name
+        self.items = []
+
+    def add_item(self, name, price, quantity):
+        self.items.append({"name": name, "price": price, "quantity": quantity})
+
+    def remove_item(self, name):
+        self.items = [item for item in self.items if item["name"] != name]
+
+    def total_price(self):
+        return sum(item["price"] * item["quantity"] for item in self.items)
+
+    def show_cart(self):
+        print(f"Cart for {self.customer_name}:")
+        for item in self.items:
+            print(item)
+        print("Total:", self.total_price())
+
+
+# Shopping carts
+cart1 = ShoppingCart("Alice")
+cart2 = ShoppingCart("Bob")
+
+cart1.add_item("Apple", 2, 5)
+cart1.add_item("Milk", 3, 2)
+cart1.add_item("Bread", 2, 1)
+cart1.remove_item("Milk")
+cart1.show_cart()
+
+cart2.add_item("Rice", 10, 1)
+cart2.add_item("Oil", 8, 2)
+cart2.add_item("Sugar", 4, 3)
+cart2.remove_item("Oil")
+cart2.show_cart(
